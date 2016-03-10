@@ -29,12 +29,14 @@ $(document).on('ready', function(){
     $(window).paged_scroll({
         handleScroll:function (page,container,doneCallback) {
             var img_url = comic_images[page];
-            var html = '<img class="comic img-responsive center-block" src="'+img_url+'"/>';
+            var tip = page + '/' + comic_totals;
+            var html = '<a href="#" rel="tooltip" title="'+tip+'"><img class="comic img-responsive center-block" src="'+img_url+'" /></a>';
             $('.image-container').append(html);
             add_cache(page+1);
             add_cache(page+2);
             add_cache(page+3);
         },
+        startPage: 1,
         triggerFromBottom:'10px',
         targetElement : $('.image-container'),
         loader:'<div class="loader">Loading next page ...</div>',
